@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            font-size:25px;
+        }
+        #root{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card{
+            background-color: beige;
+            padding: 10px 50px;
+            border-color: 5px solid burlywood;
+        }
+        dt{
+            font-weight: 600px;
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+    
+    <script src="text/javascript">
+        const card = (name,age,gender)=>{
+            div.classList.add('card');
+            const dl = document.createElement('dl');
+            const dt1= document.createElement('dt');
+            dt1.innerText = 'Name';
+            const dt2 = document.createElement('dt');
+            dt2.innerText = 'Age';
+            const dt3 = document.createElement('dt');
+            const dd1 = document.createElement('dd');
+            dd1.innerHTML = name;
+            const dd2 = document.createElement('dd');
+            dd2.innerHTML = age;
+            const dd3 = document.createElement('dd');
+            dd3.innerHTML = gender;
+
+            dl.append(dt1,dd1,dt2,dd2,dt3,dd3);
+            div.append(dl);
+            document.getElementById('root').append(div);
+        }
+
+        fetch(`http://localhost:3000/data`)
+        .then(data => data.json())
+        .then(data =>{
+            data.map(e =>{
+                card(e.name,e.age,e.gender);
+            });
+        })
+    </script>
+</body>
+</html>
